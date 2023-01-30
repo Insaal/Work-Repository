@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rosneft"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Icon="{DynamicResource imgSource}"
+        Title="Главное меню" Height="450" Width="800" Background="{DynamicResource BackgroundImage}" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         
     </Grid>

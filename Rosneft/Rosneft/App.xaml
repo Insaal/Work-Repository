@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Rosneft"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ImageSource x:Key="imgSource">Resources\Background.jpg</ImageSource>
+        <ImageBrush x:Key="BackgroundImage" ImageSource="{DynamicResource imgSource}"></ImageBrush>
     </Application.Resources>
 </Application>
