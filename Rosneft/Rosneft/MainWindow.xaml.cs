@@ -11,8 +11,10 @@ namespace Rosneft
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Owner = this;
+            LoginWindow loginWindow = new LoginWindow
+            {
+                Owner = this
+            };
             loginWindow.Show();
         }
     }
