@@ -5,15 +5,14 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Rosneft.AppDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Rosneft.Domain.AppDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Rosneft.AppDbContext";
         }
 
-        protected override void Seed(Rosneft.AppDbContext context)
+        protected override void Seed(Rosneft.Domain.AppDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

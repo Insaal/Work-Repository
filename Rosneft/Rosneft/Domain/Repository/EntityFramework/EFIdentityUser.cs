@@ -21,7 +21,7 @@ namespace Rosneft.Domain.Repositories.EntityFramework
         }
 
         //Метод для получения записей по id
-        public IQueryable<IdentityUser> GetIdentityUserById(string idUser)
+        public IQueryable<IdentityUser> GetIdentityUserById(Guid idUser)
         {
             return _context.TbIdentityUser.Where(x => x.Id == idUser).AsQueryable();
         }

@@ -8,6 +8,6 @@ namespace Rosneft.Domain.Repositories.Abstract
     {
         IQueryable<IdentityUserRole> GetIdentityUserRole();
 
-        IQueryable<IdentityUserRole> GetIdentityUserRoleById(string idRole);
+        IQueryable<IdentityUserRole> GetIdentityUserRoleById(Guid idUser);
     }
 }

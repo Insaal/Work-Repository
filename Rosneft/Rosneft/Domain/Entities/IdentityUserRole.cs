@@ -4,12 +4,14 @@ using System.ComponentModel.DataAnnotations;
 namespace Rosneft.Domain.Entities
 {
     public class IdentityUserRole
-    {       
+    {
+        [Required] public Guid Id { get; set; }
         //Обязательное поле для заполнения логина
-        [Required] public string RoleId {get;set;}
+
+        [Required] public Guid RoleId { get; set; }
 
         //Обязательное поле для заполнения пароля
-        [Required] public string UserId {get;set;}
+        [Required] public Guid UserId { get; set; }
 
     }
 }

@@ -1,12 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace RosneftCore.Domain.Entities
+namespace Rosneft.Domain.Entities
 {
     public class IdentityRole
     {
         //Обязательное поле для заполнения идентификатора
-        [Required] public string Id {get;set;}
+        [Required] public Guid Id {get;set;}
         
         //Обязательное поле для заполнения логина
         [Required] public string Name {get;set;}

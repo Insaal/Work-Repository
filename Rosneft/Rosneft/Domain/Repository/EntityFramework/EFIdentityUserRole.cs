@@ -21,9 +21,9 @@ namespace Rosneft.Domain.Repositories.EntityFramework
         }
 
         //Метод для получения записей по id
-        public IQueryable<IdentityUserRole> GetIdentityUserRoleById(string idRole)
+        public IQueryable<IdentityUserRole> GetIdentityUserRoleById(Guid idUser)
         {
-            return _context.TbIdentityUserRole.Where(x => x.RoleId == idRole).AsQueryable();
+            return _context.TbIdentityUserRole.Where(x => x.UserId == idUser).AsQueryable();
         }
     }
 }
