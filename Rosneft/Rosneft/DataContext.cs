@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using Rosneft.Domain;
-using Rosneft.Domain.Repositories.EntityFramework;
 using Rosneft.Domain.Repository;
 
 namespace Rosneft
 {
     public class DataContext
     {
-        public void Enter(string user, string password)
+        public (bool entering, string role) Enter(string user, string password)
         {
             try
             {
-                MessageBox.Show(RepositoryClass.AuthorizationUser(user, password));
+                if (RepositoryClass.AuthorizationUser(user, password).entering)
+                    return (true, RepositoryClass.AuthorizationUser(user, password).roleName);
+                return (false, null);
             }
             catch (Exception e)
             {

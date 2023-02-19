@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows;
-using Rosneft.Domain;
-using System.Threading;
-using System.Linq;
-using Rosneft.Domain.Entities;
+using Rosneft.Helpers;
+using Rosneft.Pages;
 
 namespace Rosneft
 {
@@ -16,11 +14,13 @@ namespace Rosneft
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow
+            Navigation.Service = MainFrame.NavigationService;
+            Navigation.Service.Navigate(new MainPage());
+            var loginWindow = new LoginWindow
             {
                 Owner = this
             };
-            loginWindow.Show();
+            loginWindow.ShowDialog();
         }
     }
 }

@@ -7,17 +7,11 @@ namespace Rosneft.Domain.Repository
     {
         public static AppDbContext _context = new AppDbContext();
 
-        public static string AuthorizationUser(string login, string password)
+        public static (bool entering, string roleName) AuthorizationUser(string login, string password)
         {
             if (Authorize(login, password))
-            {
-
-                return GetRoleName(SelectRoleId(SelectUserId(login, password)));
-            }
-            else
-            {
-                return "Sasi";
-            }
+                return (true, GetRoleName(SelectRoleId(SelectUserId(login, password))));
+            return (false, "");
         }
 
         public static bool Authorize(string login, string password)
@@ -27,18 +21,19 @@ namespace Rosneft.Domain.Repository
 
         public static Guid SelectUserId(string login, string password)
         {
-            return _context.TbIdentityUser.Where(x => x.UserName.Equals(login) && x.PasswordHash.Equals(password)).Select(y => y.Id).FirstOrDefault();
+            return _context.TbIdentityUser.Where(x => x.UserName.Equals(login) && x.PasswordHash.Equals(password))
+                .Select(y => y.Id).FirstOrDefault();
         }
 
         public static Guid SelectRoleId(Guid idUser)
         {
-            return _context.TbIdentityUserRole.Where(x => x.UserId.Equals(idUser)).Select(x => x.RoleId).FirstOrDefault();
+            return _context.TbIdentityUserRole.Where(x => x.UserId.Equals(idUser)).Select(x => x.RoleId)
+                .FirstOrDefault();
         }
 
         public static string GetRoleName(Guid idRole)
         {
             return _context.TbIdentityRole.Where(x => x.Id.Equals(idRole)).Select(x => x.Name).FirstOrDefault();
         }
-
     }
 }
