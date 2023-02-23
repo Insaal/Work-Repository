@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Web.UI.WebControls;
 using System.Windows;
 using Rosneft.Helpers;
 using Rosneft.Pages;
@@ -14,6 +15,8 @@ namespace Rosneft
         private RelayCommand _enterCommand;
         private RelayCommand _exitCommand;
         private RelayCommand<CancelEventArgs> _exitRelayCommand;
+        private RelayCommand _goAdmin;
+        private RelayCommand _goMain;
         private string[] _data;
 
         public RelayCommand EnterCommand
@@ -87,6 +90,31 @@ namespace Rosneft
             }
         }
 
+        public RelayCommand GoMain
+        {
+            get
+            {
+                return _goMain ??
+                       (_goMain = new RelayCommand(obj =>
+                       {
+                           GoMainCommandExecute();
+                       }));
+            }
+        }
+
+        public RelayCommand GoAdminCommand
+        {
+            get
+            {
+                return _goAdmin ??
+                       (_goAdmin = new RelayCommand(obj =>
+                       {
+                           GoToAboutCommandExecute();
+                       }));
+            }
+        }
+
+
         //public void LogginWindow_Closing(object sender, CancelEventArgs e)
         //{
         //    if (_closedlogginwindow == 1)
@@ -119,17 +147,22 @@ namespace Rosneft
         //    }
         //}
 
-
         public void Closing()
         {
             Application.Current.Shutdown();
         }
 
-        public void Main()
+        private void GoToAboutCommandExecute()
         {
-            var _mainPage = new MainPage();
-            if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = _mainPage.Title;
-            Navigation.Navigate(Navigation.MainPage, this);
+            AdminPage page = new AdminPage();
+            if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
+            Navigation.Navigate(Navigation.AdminPage);
+        }
+
+        private void GoMainCommandExecute()
+        {
+            MainPage page = new MainPage();
+            Navigation.Navigate(Navigation.MainPage);
         }
     }
 }

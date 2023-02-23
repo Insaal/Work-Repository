@@ -4,23 +4,67 @@
              xmlns:local="clr-namespace:Rosneft"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
+        <Image x:Key="Employees" Source="Resources\EmployeesInfo.png"/>
+        <Image x:Key="Admin" Source="Resources\User.png"/>
+        <Image x:Key="Salary" Source="Resources\Calculating.png"/>
+        <Image x:Key="About" Source="Resources\About.png"/>
+        <Image x:Key="Exit" Source="Resources\Exit.png"/>
         <ImageSource x:Key="imgSource">Resources\Background.jpg</ImageSource>
+        <ImageSource x:Key="imgSourceHomeIcon">Resources\Home.png</ImageSource>
+        <ImageSource x:Key="imgSourceAdminIcon">Resources\Admin.png</ImageSource>
+        <ImageSource x:Key="imgSourceHamburgerMenuIcon">Resources\HamburgerMenu.png</ImageSource>
         <ImageBrush x:Key="BackgroundImage" ImageSource="{DynamicResource imgSource}"/>
+
+        <Style TargetType="Label" x:Key="LblMainWindow">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="15,0,0,0"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TbMainPage">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="WindowButtons">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Width" Value="75"/>
-            <Setter Property="Margin" Value="25,0,0,0"></Setter>
+            <Setter Property="Margin" Value="25,0,0,0"/>
         </Style>
+
         <Style TargetType="TextBox">
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="20"/>
         </Style>
+
         <Style TargetType="PasswordBox">
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="20"/>
         </Style>
+
         <Style x:Key="innerStackPanel" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
+
     </Application.Resources>
 </Application>

@@ -10,7 +10,7 @@ namespace Rosneft.Helpers
 
         public static readonly string MainPage = "MainPage";
 
-        //public static readonly string AdminUsers = "AdminUsers";
+        public static readonly string AdminPage = "AdminUsers";
         //public static readonly string CalculatingSalary = "CalculatingSalary";
         //public static readonly string Report = "Report";
         //public static readonly string About = "About";

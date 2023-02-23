@@ -13,7 +13,7 @@ namespace Rosneft.Helpers
         public PagesResolver()
         {
             _pagesResolvers.Add(Navigation.MainPage, () => new MainPage());
-            //_pagesResolvers.Add(Navigation.AdminUsers, () => new AdminUsers());
+            _pagesResolvers.Add(Navigation.AdminPage, () => new AdminPage());
             //_pagesResolvers.Add(Navigation.CalculatingSalary, () => new CalculatingSalary());
             //_pagesResolvers.Add(Navigation.About, () => new About());
         }

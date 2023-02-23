@@ -6,6 +6,8 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
         xmlns:local="clr-namespace:Rosneft"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:pages="clr-namespace:Rosneft.Pages"
         mc:Ignorable="d"
         Icon="{DynamicResource imgSource}"
         Title="Главное меню" Height="450" Width="800"
@@ -18,7 +20,89 @@
             <cmd:EventToCommand Command="{Binding ExitRelayCommand}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+
+    <Window.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource LblMainWindow}"></Style>
+    </Window.Resources>
+
     <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="Transparent" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="Definition" Width="50" MaxWidth="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="0" Background="Transparent" BorderBrush="Black"  Margin="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.Triggers>
+                <EventTrigger RoutedEvent="ListBox.MouseEnter">
+                    <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                                <Storyboard Storyboard.TargetName="Definition" Storyboard.TargetProperty="(ColumnDefinition.Width)">
+                                    <mah:GridLengthAnimation To="200" BeginTime="00:00:01" Duration="00:00:05"/>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="ListBox.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <Storyboard Storyboard.TargetName="Definition" Storyboard.TargetProperty="(ColumnDefinition.Width)">
+                                <mah:GridLengthAnimation To="50" Duration="00:00:05"/>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ListBox.Triggers>
+
+            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                        <Image Source="{StaticResource imgSourceHamburgerMenuIcon}" Margin="0" Height="50"/>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                            <Storyboard Storyboard.TargetName="Definition" Storyboard.TargetProperty="(ColumnDefinition.Width)">
+                                                <mah:GridLengthAnimation To="200" Duration="00:00:05"/>
+                                            </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </StackPanel>
+            </ListBoxItem>
+
+            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Button  Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Command="{Binding GoMain}" >
+                        <Image Source="{StaticResource imgSourceHomeIcon}" Margin="0" Height="50"/>
+                    </Button>
+
+                    <Label Content="Главная" Width="100">
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoMain}" MouseAction="LeftClick"/>
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" Command="{Binding GoAdminCommand}" >
+                        <Image Source="{StaticResource imgSourceAdminIcon}" Margin="0" Height="50"/>
+                    </Button>
+                    <Label Width="100">
+                        <Label.Content>
+                            <TextBlock Text="Администрирование" TextWrapping="Wrap"/>
+                        </Label.Content>
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoAdminCommand}" MouseAction="LeftClick" />
+                        </Label.InputBindings>
+                        </Label>
+                </StackPanel>
+            </ListBoxItem>
+        </ListBox>
+            <Frame Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="Transparent" />
     </Grid>
 </Window>
