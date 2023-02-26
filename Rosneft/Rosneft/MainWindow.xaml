@@ -102,6 +102,21 @@
                         </Label>
                 </StackPanel>
             </ListBoxItem>
+            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" Command="{Binding GoAdminCommand}" >
+                        <Image Source="{StaticResource imgSourceChat}" Margin="0" Height="50"/>
+                    </Button>
+                    <Label Width="100">
+                        <Label.Content>
+                            <TextBlock Text="Чат" TextWrapping="Wrap"/>
+                        </Label.Content>
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoAdminCommand}" MouseAction="LeftClick" />
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </ListBoxItem>
         </ListBox>
             <Frame Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="Transparent" />
     </Grid>

@@ -14,6 +14,7 @@
         <ImageSource x:Key="imgSourceHomeIcon">Resources\Home.png</ImageSource>
         <ImageSource x:Key="imgSourceAdminIcon">Resources\Admin.png</ImageSource>
         <ImageSource x:Key="imgSourceHamburgerMenuIcon">Resources\HamburgerMenu.png</ImageSource>
+        <ImageSource x:Key="imgSourceChat">Resources\Chat.png</ImageSource>
         <ImageBrush x:Key="BackgroundImage" ImageSource="{DynamicResource imgSource}"/>
 
         <Style TargetType="Label" x:Key="LblMainWindow">

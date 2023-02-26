@@ -10,10 +10,13 @@ namespace Rosneft.Domain.Entities
         [Required] public Guid Id { get; set; }
 
         //Обязательное поле для заполнения логина
-        [Required] public string UserName { get; set; }
+        [Required] public string Login { get; set; }
 
         //Обязательное поле для заполнения пароля
-        [Required] public string PasswordHash { get; set; }
+        [Required] public string Password { get; set; }
+
+        //Обязательное поле для заполнения имени пользователя
+        [Required] public Guid UserName { get; set; }
 
     }
 }
