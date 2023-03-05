@@ -136,3 +136,15 @@ E:\Work-Repository\Rosneft\Rosneft\bin\Debug\MahApps.Metro.xml
 E:\Work-Repository\Rosneft\Rosneft\bin\Debug\de\MahApps.Metro.resources.dll
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.csproj.AssemblyReference.cache
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial.resources
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\CalculationNormsPage.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\DocumentsPage.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\RepairArchivePage.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\RepairPage.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\TimeSheetPage.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\CalculationNormsPage.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\DocumentsPage.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\RepairArchivePage.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\RepairPage.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\TimeSheetPage.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\ChatPage.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\ChatPage.baml

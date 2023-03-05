@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Windows;
 using Rosneft.Helpers;
-using Rosneft.Pages;
 using Rosneft.Properties;
 
 namespace Rosneft
@@ -17,6 +16,12 @@ namespace Rosneft
         private RelayCommand _exitCommand;
         private RelayCommand _getMessage;
         private RelayCommand<CancelEventArgs> _exitRelayCommand;
+        private RelayCommand _goRepair;
+        private RelayCommand _goRepairArchive;
+        private RelayCommand _goCalculationNorms;
+        private RelayCommand _goTimeSheet;
+        private RelayCommand _goDocuments;
+        private RelayCommand _goChat;
         private RelayCommand _goAdmin;
         private RelayCommand _goMain;
         private string[] _data;
@@ -36,9 +41,7 @@ namespace Rosneft
             get
             {
                 return _getMessage ??
-                       (_getMessage = new RelayCommand(obj =>
-                       {
-                       }));
+                       (_getMessage = new RelayCommand(obj => { }));
             }
         }
 
@@ -144,12 +147,78 @@ namespace Rosneft
             }
         }
 
+        public RelayCommand GoRepairCommand
+        {
+            get
+            {
+                return _goRepair ??
+                       (_goRepair = new RelayCommand(obj =>
+                       {
+                           Navigation.Navigate(Navigation.RepairPage);
+                       }));
+            }
+        }
+
+        public RelayCommand GoRepairArchiveCommand
+        {
+            get
+            {
+                return _goRepairArchive ??
+                       (_goRepairArchive = new RelayCommand(obj =>
+                       {
+                           Navigation.Navigate(Navigation.RepairArchivePage);
+                       }));
+            }
+        }
+
+        public RelayCommand GoCalculationNormsCommand
+        {
+            get
+            {
+                return _goCalculationNorms ??
+                       (_goCalculationNorms = new RelayCommand(obj =>
+                       {
+                           Navigation.Navigate(Navigation.CalculationNormsPage);
+                       }));
+            }
+        }
+
+        public RelayCommand GoTimeSheetCommand
+        {
+            get
+            {
+                return _goTimeSheet ??
+                       (_goTimeSheet = new RelayCommand(obj => { Navigation.Navigate(Navigation.TimeSheetPage); }));
+            }
+        }
+
+        public RelayCommand GoDocumentsCommand
+        {
+            get
+            {
+                return _goDocuments ??
+                       (_goDocuments = new RelayCommand(obj => { Navigation.Navigate(Navigation.DocumentsPage); }));
+            }
+        }
+
+        public RelayCommand GoChatCommand
+        {
+            get
+            {
+                return _goChat ??
+                       (_goChat = new RelayCommand(obj => { Navigation.Navigate(Navigation.ChatPage); }));
+            }
+        }
+
         public RelayCommand GoMain
         {
             get
             {
                 return _goMain ??
-                       (_goMain = new RelayCommand(obj => { GoMainCommandExecute(); }));
+                       (_goMain = new RelayCommand(obj =>
+                       {
+                           Navigation.Navigate(Navigation.MainPage);
+                       }));
             }
         }
 
@@ -158,7 +227,10 @@ namespace Rosneft
             get
             {
                 return _goAdmin ??
-                       (_goAdmin = new RelayCommand(obj => { GoToAboutCommandExecute(); }));
+                       (_goAdmin = new RelayCommand(obj =>
+                       {
+                           Navigation.Navigate(Navigation.AdminPage);
+                       }));
             }
         }
 
@@ -200,17 +272,46 @@ namespace Rosneft
             Application.Current.Shutdown();
         }
 
-        private void GoToAboutCommandExecute()
-        {
-            var page = new AdminPage();
-            if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
-            Navigation.Navigate(Navigation.AdminPage);
-        }
+        //private void Navigate(string name)
+        //{
+        //    Page page = null;
+        //    switch (name)
+        //    {
+        //        case "Repair": page = new RepairPage(); break;
+        //        case "RepairArchive": page = new RepairArchivePage();
+        //            break;
+        //        case "CalculationNorms": page = new CalculationNormsPage();
+        //            break;
+        //        case "TimeSheet": page = new TimeSheetPage(); break;
+        //        case "Documents": page = new DocumentsPage(); break;
+        //        case "Chat": page = new AdminPage(); break;
+        //        case "Admin": page = new AdminPage(); break;
+        //        case "Main": page = new MainPage();
+        //            break;
+        //    };
+        //    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
+        //    Navigation.Navigate(page);
+        //}
 
-        private void GoMainCommandExecute()
-        {
-            var page = new MainPage();
-            Navigation.Navigate(Navigation.MainPage);
-        }
+        ////private void GoRepairCommandExecute()
+        ////{
+        ////    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
+        ////    Navigation.Navigate(page);
+        ////}
+
+
+        //private void GoAdminCommandExecute()
+        //{
+        //    var page = new AdminPage();
+        //    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
+        //    Navigation.Navigate(Navigation.AdminPage);
+        //}
+
+        //private void GoMainCommandExecute()
+        //{
+        //    var page = new MainPage();
+        //    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
+        //    Navigation.Navigate(Navigation.MainPage);
+        //}
     }
 }

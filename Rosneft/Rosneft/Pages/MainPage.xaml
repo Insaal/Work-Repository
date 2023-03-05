@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage" Loaded="MainPage_OnLoaded">
+      Title="Главное меню" Loaded="MainPage_OnLoaded">
 
     <Page.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource WindowButtons}" />
@@ -13,32 +13,31 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="206*" />
-            <RowDefinition Height="185*" />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="228*" />
-            <ColumnDefinition Width="140*" />
-            <ColumnDefinition Width="148*" />
-            <ColumnDefinition Width="279*" />
-            <ColumnDefinition Width="5*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Button Command="{Binding GoToOperationOnEmployeesCommand}" CommandParameter="{Binding ViewModel}"
-                Grid.Column="0" Grid.Row="0">
+
+        <Button Command="{Binding GoRepairCommand}" Grid.Column="0" Grid.Row="0">
             <StackPanel Orientation="Vertical">
-                <ContentControl Content="{StaticResource Employees}" Width="100" />
-                <TextBlock Text="Работа с данными сотрудников" />
+                <ContentControl Content="{StaticResource Maintenance}" Width="100" />
+                <TextBlock Text="Ведение ремонта" />
             </StackPanel>
             <Button.RenderTransform>
-                <ScaleTransform x:Name="Employees" />
+                <ScaleTransform x:Name="Repair" />
             </Button.RenderTransform>
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="Employees" Storyboard.TargetProperty="ScaleX"
+                            <DoubleAnimation Storyboard.TargetName="Repair" Storyboard.TargetProperty="ScaleX"
                                              To="1.1" Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetName="Employees" Storyboard.TargetProperty="ScaleY"
+                            <DoubleAnimation Storyboard.TargetName="Repair" Storyboard.TargetProperty="ScaleY"
                                              To="1.1" Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -46,30 +45,33 @@
                 <EventTrigger RoutedEvent="Button.MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="Employees" Storyboard.TargetProperty="ScaleX"
+                            <DoubleAnimation Storyboard.TargetName="Repair" Storyboard.TargetProperty="ScaleX"
                                              Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetName="Employees" Storyboard.TargetProperty="ScaleY"
+                            <DoubleAnimation Storyboard.TargetName="Repair" Storyboard.TargetProperty="ScaleY"
                                              Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
             </Button.Triggers>
         </Button>
-        <Button Command="{Binding GoToCalculatingSalaryCommand}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+
+        <Button Command="{Binding GoRepairArchiveCommand}" Grid.Column="1" Grid.Row="0">
             <StackPanel Orientation="Vertical">
-                <ContentControl Content="{StaticResource Salary}" Width="100" />
-                <TextBlock Text="Расчет заработной платы" />
+                <ContentControl Content="{StaticResource Archive}" Width="100" />
+                <TextBlock Text="Архив ремонтов" />
             </StackPanel>
             <Button.RenderTransform>
-                <ScaleTransform x:Name="Salary" />
+                <ScaleTransform x:Name="RepairArchive" />
             </Button.RenderTransform>
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="Salary" Storyboard.TargetProperty="ScaleX" To="1.1"
+                            <DoubleAnimation Storyboard.TargetName="RepairArchive" Storyboard.TargetProperty="ScaleX"
+                                             To="1.1"
                                              Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetName="Salary" Storyboard.TargetProperty="ScaleY" To="1.1"
+                            <DoubleAnimation Storyboard.TargetName="RepairArchive" Storyboard.TargetProperty="ScaleY"
+                                             To="1.1"
                                              Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -77,16 +79,151 @@
                 <EventTrigger RoutedEvent="Button.MouseLeave">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="Salary" Storyboard.TargetProperty="ScaleX"
+                            <DoubleAnimation Storyboard.TargetName="RepairArchive" Storyboard.TargetProperty="ScaleX"
                                              Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetName="Salary" Storyboard.TargetProperty="ScaleY"
+                            <DoubleAnimation Storyboard.TargetName="RepairArchive" Storyboard.TargetProperty="ScaleY"
                                              Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
             </Button.Triggers>
         </Button>
-        <Button Command="{Binding GoAdminCommand}" Grid.Column="3" Grid.Row="0">
+
+        <Button Command="{Binding GoCalculationNormsCommand}" Grid.Column="2" Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <ContentControl Content="{StaticResource Calculate}" Width="100" />
+                <TextBlock Text="Расчет норм" />
+            </StackPanel>
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="CalculationNorms" />
+            </Button.RenderTransform>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="CalculationNorms"
+                                             Storyboard.TargetProperty="ScaleX" To="1.1"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="CalculationNorms"
+                                             Storyboard.TargetProperty="ScaleY" To="1.1"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="CalculationNorms"
+                                             Storyboard.TargetProperty="ScaleX"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="CalculationNorms"
+                                             Storyboard.TargetProperty="ScaleY"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+        <Button Command="{Binding GoTimeSheetCommand}" Grid.Column="3" Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <ContentControl Content="{StaticResource TimeSheet}" Width="100"/>
+                <TextBlock Text="Табелирование" />
+            </StackPanel>
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="Tabel" />
+            </Button.RenderTransform>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Tabel" Storyboard.TargetProperty="ScaleX" To="1.1"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="Tabel" Storyboard.TargetProperty="ScaleY" To="1.1"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Tabel" Storyboard.TargetProperty="ScaleX"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="Tabel" Storyboard.TargetProperty="ScaleY"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+        <Button Command="{Binding GoDocumentsCommand}" Grid.Column="0" Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <ContentControl Content="{StaticResource Documents}" Width="100" />
+                <TextBlock Text="Документация" />
+            </StackPanel>
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="Documents" />
+            </Button.RenderTransform>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Documents" Storyboard.TargetProperty="ScaleX"
+                                             To="1.1"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="Documents" Storyboard.TargetProperty="ScaleY"
+                                             To="1.1"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Documents" Storyboard.TargetProperty="ScaleX"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="Documents" Storyboard.TargetProperty="ScaleY"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+        <Button Command="{Binding GoChatCommand}" Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <ContentControl Content="{StaticResource Chat}" Width="100" />
+                <TextBlock Text="Чат" />
+            </StackPanel>
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="Chat" />
+            </Button.RenderTransform>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Chat" Storyboard.TargetProperty="ScaleX" To="1.1"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="Chat" Storyboard.TargetProperty="ScaleY" To="1.1"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Chat" Storyboard.TargetProperty="ScaleX"
+                                             Duration="0:0:0.2" />
+                            <DoubleAnimation Storyboard.TargetName="Chat" Storyboard.TargetProperty="ScaleY"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+        <Button Command="{Binding GoAdminCommand}" Grid.Column="2" Grid.Row="1">
             <StackPanel Orientation="Vertical">
                 <ContentControl Content="{StaticResource Admin}" Width="100" />
                 <TextBlock Text="Администрирование" />
@@ -117,40 +254,11 @@
                 </EventTrigger>
             </Button.Triggers>
         </Button>
-        <Button Command="{Binding GoToAboutCommand}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
-            <StackPanel Orientation="Vertical">
-                <ContentControl Content="{StaticResource About}" Width="100" />
-                <TextBlock Text="О программе" />
-            </StackPanel>
-            <Button.RenderTransform>
-                <ScaleTransform x:Name="About" />
-            </Button.RenderTransform>
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="About" Storyboard.TargetProperty="ScaleX" To="1.1"
-                                             Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetName="About" Storyboard.TargetProperty="ScaleY" To="1.1"
-                                             Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="About" Storyboard.TargetProperty="ScaleX"
-                                             Duration="0:0:0.2" />
-                            <DoubleAnimation Storyboard.TargetName="About" Storyboard.TargetProperty="ScaleY"
-                                             Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Command="{Binding ExitCommand}" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1">
-            <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
-                <ContentControl Content="{StaticResource Exit}" HorizontalAlignment="Left" Width="180" Height="100" />
+
+
+        <Button Command="{Binding ExitCommand}" Grid.Column="3" Grid.Row="1">
+            <StackPanel>
+                <ContentControl Content="{StaticResource Exit}" Width="100" />
                 <TextBlock Text="Выход из программы" />
             </StackPanel>
             <Button.RenderTransform>

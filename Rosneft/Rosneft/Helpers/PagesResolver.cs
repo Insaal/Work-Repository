@@ -14,8 +14,12 @@ namespace Rosneft.Helpers
         {
             _pagesResolvers.Add(Navigation.MainPage, () => new MainPage());
             _pagesResolvers.Add(Navigation.AdminPage, () => new AdminPage());
-            //_pagesResolvers.Add(Navigation.CalculatingSalary, () => new CalculatingSalary());
-            //_pagesResolvers.Add(Navigation.About, () => new About());
+            _pagesResolvers.Add(Navigation.RepairPage, () => new RepairPage());
+            _pagesResolvers.Add(Navigation.RepairArchivePage, () => new RepairArchivePage());
+            _pagesResolvers.Add(Navigation.CalculationNormsPage, () => new CalculationNormsPage());
+            _pagesResolvers.Add(Navigation.TimeSheetPage, () => new TimeSheetPage());
+            _pagesResolvers.Add(Navigation.DocumentsPage, () => new DocumentsPage());
+            _pagesResolvers.Add(Navigation.ChatPage, () => new ChatPage());
         }
 
         public Page GetPageInstance(string alias)

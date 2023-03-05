@@ -36,7 +36,7 @@
                     </Grid.ColumnDefinitions>
                     <DataGrid Grid.Column="0" Grid.ColumnSpan="3" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservableUsers, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="auto" Header="Номер п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
                             <DataGridTextColumn Width="*" Header="Логин" Binding="{Binding Path='Login', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                             <DataGridTextColumn Width="*" Header="Пароль" Binding="{Binding Path='Password', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                             <DataGridTextColumn Width="*" Header="Имя пользователя" Binding="{Binding Path='UserName', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
@@ -59,7 +59,7 @@
                     </Grid.ColumnDefinitions>
                     <DataGrid Grid.Column="0" Grid.ColumnSpan="3" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservableEmployees, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="auto" Header="Номер п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
                             <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding Path='SurName', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                             <DataGridTextColumn Width="*" Header="Имя" Binding="{Binding Path='Name', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                             <DataGridTextColumn Width="*" Header="Отчество" Binding="{Binding Path='ThirdName', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
@@ -83,7 +83,7 @@
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Column="0" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservableDepartment, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="auto" Header="Номер п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Width="*" Header="Отдел" Binding="{Binding Path='Department', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                 </DataGrid.Columns>
             </DataGrid>
@@ -101,7 +101,7 @@
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Column="0" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservableBush, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="auto" Header="Номер п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Width="*" Header="Куст" Binding="{Binding Path='Bush', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                 </DataGrid.Columns>
             </DataGrid>
@@ -118,7 +118,7 @@
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Column="0" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservableField, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="auto" Header="Номер п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Width="*" Header="Месторождение" Binding="{Binding Path='Field', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                 </DataGrid.Columns>
             </DataGrid>
@@ -135,7 +135,7 @@
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Column="0" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservableTeam, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="auto" Header="Номер п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Width="*" Header="Бригады" Binding="{Binding Path='Team', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                 </DataGrid.Columns>
             </DataGrid>
@@ -153,7 +153,7 @@
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Column="0" IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservablePost, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding DataCollection.ObservablePost}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="auto" Header="Номер п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Width="*" Header="Должности" Binding="{Binding Path='Post', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
                 </DataGrid.Columns>
             </DataGrid>

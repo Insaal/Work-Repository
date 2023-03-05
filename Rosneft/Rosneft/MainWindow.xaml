@@ -9,9 +9,10 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:pages="clr-namespace:Rosneft.Pages"
         mc:Ignorable="d"
-        Icon="{DynamicResource imgSource}"
+        Icon="{DynamicResource Background}"
         Title="Главное меню" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+
     <Window.DataContext>
         <local:ApplicationViewModel/>
     </Window.DataContext>
@@ -22,26 +23,34 @@
     </i:Interaction.Triggers>
 
     <Window.Resources>
-        <Style TargetType="Label" BasedOn="{StaticResource LblMainWindow}"></Style>
+        <Style TargetType="Label" BasedOn="{StaticResource LblMainWindow}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource HamburgerBtn}"/>
+        <Style TargetType="Image" BasedOn="{StaticResource HamburgerImg}"/>
+        <Style TargetType="ListBoxItem" BasedOn="{StaticResource HamburgerLbI}"/>
+        <Style TargetType="StackPanel" BasedOn="{StaticResource HamburgerSp}"/>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource HamburgerTb}"/>
     </Window.Resources>
 
-    <Grid>
+    <Grid Opacity="50">
+        <Grid.Background>
+            <ImageBrush ImageSource="{DynamicResource Background}" Opacity="0.3"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="Definition" Width="50" MaxWidth="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" Background="Transparent" BorderBrush="Black"  Margin="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox Grid.Column="0" Background="Transparent" BorderBrush="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.Triggers>
                 <EventTrigger RoutedEvent="ListBox.MouseEnter">
                     <EventTrigger.Actions>
-                    <BeginStoryboard>
-                        <Storyboard>
+                        <BeginStoryboard>
+                            <Storyboard>
                                 <Storyboard Storyboard.TargetName="Definition" Storyboard.TargetProperty="(ColumnDefinition.Width)">
                                     <mah:GridLengthAnimation To="200" BeginTime="00:00:01" Duration="00:00:05"/>
+                                </Storyboard>
                             </Storyboard>
-                        </Storyboard>
-                    </BeginStoryboard>
+                        </BeginStoryboard>
                     </EventTrigger.Actions>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="ListBox.MouseLeave">
@@ -55,17 +64,17 @@
                 </EventTrigger>
             </ListBox.Triggers>
 
-            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Button Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        <Image Source="{StaticResource imgSourceHamburgerMenuIcon}" Margin="0" Height="50"/>
+            <ListBoxItem>
+                <StackPanel>
+                    <Button>
+                        <Image Source="{StaticResource ImgHamburgerMenu}"/>
                         <Button.Triggers>
                             <EventTrigger RoutedEvent="Button.Click">
                                 <EventTrigger.Actions>
                                     <BeginStoryboard>
-                                            <Storyboard Storyboard.TargetName="Definition" Storyboard.TargetProperty="(ColumnDefinition.Width)">
-                                                <mah:GridLengthAnimation To="200" Duration="00:00:05"/>
-                                            </Storyboard>
+                                        <Storyboard Storyboard.TargetName="Definition" Storyboard.TargetProperty="(ColumnDefinition.Width)">
+                                            <mah:GridLengthAnimation To="200" Duration="00:00:05"/>
+                                        </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger.Actions>
                             </EventTrigger>
@@ -74,42 +83,121 @@
                 </StackPanel>
             </ListBoxItem>
 
-            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
+            <ListBoxItem>
                 <StackPanel Orientation="Horizontal">
-                    <Button  Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Command="{Binding GoMain}" >
-                        <Image Source="{StaticResource imgSourceHomeIcon}" Margin="0" Height="50"/>
+                    <Button Command="{Binding GoMain}" >
+                        <Image Source="{StaticResource ImgHome}"/>
                     </Button>
 
-                    <Label Content="Главная" Width="100">
+                    <Label Content="Главная">
                         <Label.InputBindings>
                             <MouseBinding Command="{Binding GoMain}" MouseAction="LeftClick"/>
                         </Label.InputBindings>
                     </Label>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Button Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" Command="{Binding GoAdminCommand}" >
-                        <Image Source="{StaticResource imgSourceAdminIcon}" Margin="0" Height="50"/>
+
+            <ListBoxItem>
+                <StackPanel>
+                    <Button Command="{Binding GoRepairCommand}" >
+                        <Image Source="{StaticResource ImgMaintenance}"/>
                     </Button>
-                    <Label Width="100">
+                    <Label>
                         <Label.Content>
-                            <TextBlock Text="Администрирование" TextWrapping="Wrap"/>
+                            <TextBlock Text="Ведение ремонта"/>
                         </Label.Content>
                         <Label.InputBindings>
-                            <MouseBinding Command="{Binding GoAdminCommand}" MouseAction="LeftClick" />
+                            <MouseBinding Command="{Binding GoRepairCommand}" MouseAction="LeftClick" />
                         </Label.InputBindings>
-                        </Label>
+                    </Label>
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem HorizontalContentAlignment="Left" Background="Transparent">
-                <StackPanel Orientation="Horizontal">
-                    <Button Width="40" Margin="0" Background="Transparent" BorderBrush="Transparent" Command="{Binding GoAdminCommand}" >
-                        <Image Source="{StaticResource imgSourceChat}" Margin="0" Height="50"/>
+            <ListBoxItem>
+                <StackPanel>
+                    <Button Command="{Binding GoRepairArchiveCommand}" >
+                        <Image Source="{StaticResource ImgArchive}"/>
                     </Button>
-                    <Label Width="100">
+                    <Label>
                         <Label.Content>
-                            <TextBlock Text="Чат" TextWrapping="Wrap"/>
+                            <TextBlock Text="Архив ремонта"/>
+                        </Label.Content>
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoRepairArchiveCommand}" MouseAction="LeftClick" />
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem>
+                <StackPanel>
+                    <Button Command="{Binding GoCalculationNormsCommand}" >
+                        <Image Source="{StaticResource ImgCalculate}"/>
+                    </Button>
+                    <Label>
+                        <Label.Content>
+                            <TextBlock Text="Расчет норм"/>
+                        </Label.Content>
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoCalculationNormsCommand}" MouseAction="LeftClick" />
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem>
+                <StackPanel>
+                    <Button Command="{Binding GoTimeSheetCommand}" >
+                        <Image Source="{StaticResource ImgTimeSheet}"/>
+                    </Button>
+                    <Label>
+                        <Label.Content>
+                            <TextBlock Text="Табелирование"/>
+                        </Label.Content>
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoTimeSheetCommand}" MouseAction="LeftClick" />
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </ListBoxItem>
+
+            <ListBoxItem>
+                <StackPanel>
+                    <Button Command="{Binding GoDocumentsCommand}" >
+                        <Image Source="{StaticResource ImgDocuments}"/>
+                    </Button>
+                    <Label>
+                        <Label.Content>
+                            <TextBlock Text="Документация"/>
+                        </Label.Content>
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoDocumentsCommand}" MouseAction="LeftClick" />
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </ListBoxItem>
+
+            <ListBoxItem>
+                <StackPanel>
+                    <Button Command="{Binding GoChatCommand}" >
+                        <Image Source="{StaticResource ImgChat}"/>
+                    </Button>
+                    <Label>
+                        <Label.Content>
+                            <TextBlock Text="Чат"/>
+                        </Label.Content>
+                        <Label.InputBindings>
+                            <MouseBinding Command="{Binding GoChatCommand}" MouseAction="LeftClick" />
+                        </Label.InputBindings>
+                    </Label>
+                </StackPanel>
+            </ListBoxItem>
+
+            <ListBoxItem>
+                <StackPanel>
+                    <Button Command="{Binding GoAdminCommand}" >
+                        <Image Source="{StaticResource ImgAdmin}"/>
+                    </Button>
+                    <Label>
+                        <Label.Content>
+                            <TextBlock Text="Администрирование"/>
                         </Label.Content>
                         <Label.InputBindings>
                             <MouseBinding Command="{Binding GoAdminCommand}" MouseAction="LeftClick" />
@@ -117,7 +205,9 @@
                     </Label>
                 </StackPanel>
             </ListBoxItem>
+
+
         </ListBox>
-            <Frame Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="Transparent" />
+        <Frame Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="Transparent" />
     </Grid>
 </Window>

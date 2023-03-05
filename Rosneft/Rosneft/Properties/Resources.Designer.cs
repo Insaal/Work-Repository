@@ -83,6 +83,16 @@ namespace Rosneft.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Archive {
+            get {
+                object obj = ResourceManager.GetObject("Archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Background {
             get {
                 object obj = ResourceManager.GetObject("Background", resourceCulture);
@@ -106,6 +116,16 @@ namespace Rosneft.Properties {
         internal static System.Drawing.Bitmap Chat {
             get {
                 object obj = ResourceManager.GetObject("Chat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Documents {
+            get {
+                object obj = ResourceManager.GetObject("Documents", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,6 +173,16 @@ namespace Rosneft.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Maintenance {
+            get {
+                object obj = ResourceManager.GetObject("Maintenance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Report {
             get {
                 object obj = ResourceManager.GetObject("Report", resourceCulture);
@@ -163,9 +193,9 @@ namespace Rosneft.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Rosneft {
+        internal static System.Drawing.Bitmap Timesheet {
             get {
-                object obj = ResourceManager.GetObject("Rosneft", resourceCulture);
+                object obj = ResourceManager.GetObject("Timesheet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

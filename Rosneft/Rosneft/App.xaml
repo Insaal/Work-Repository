@@ -4,18 +4,30 @@
              xmlns:local="clr-namespace:Rosneft"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
-        <Image x:Key="Employees" Source="Resources\EmployeesInfo.png"/>
-        <Image x:Key="Admin" Source="Resources\User.png"/>
-        <Image x:Key="Salary" Source="Resources\Calculating.png"/>
-        <Image x:Key="About" Source="Resources\About.png"/>
-        <Image x:Key="Exit" Source="Resources\Exit.png"/>
-        <ImageSource x:Key="imgSource">Resources\Background.jpg</ImageSource>
-        <ImageSource x:Key="imgSourceHomeIcon">Resources\Home.png</ImageSource>
-        <ImageSource x:Key="imgSourceAdminIcon">Resources\Admin.png</ImageSource>
-        <ImageSource x:Key="imgSourceHamburgerMenuIcon">Resources\HamburgerMenu.png</ImageSource>
-        <ImageSource x:Key="imgSourceChat">Resources\Chat.png</ImageSource>
-        <ImageBrush x:Key="BackgroundImage" ImageSource="{DynamicResource imgSource}"/>
+
+        <Image x:Key="Maintenance" Source="Resources/Maintenance.png"/>
+        <Image x:Key="Archive" Source="Resources/Archive.png"/>
+        <Image x:Key="Calculate" Source="Resources/Calculating.png"/>
+        <Image x:Key="TimeSheet" Source="Resources/Timesheet.png"/>
+        <Image x:Key="Documents" Source="Resources/Documents.png"/>
+        <Image x:Key="Chat" Source="Resources/Chat.png"/>
+        <Image x:Key="Admin" Source="Resources/User.png"/>
+        <Image x:Key="About" Source="Resources/About.png"/>
+        <Image x:Key="Exit" Source="Resources/Exit.png"/>
+
+        <ImageSource x:Key="ImgHamburgerMenu">Resources/HamburgerMenu.png</ImageSource>
+        <ImageSource x:Key="ImgHome">Resources/Home.png</ImageSource>
+        <ImageSource x:Key="ImgMaintenance">Resources/Maintenance.png</ImageSource>
+        <ImageSource x:Key="ImgArchive">Resources/Archive.png</ImageSource>
+        <ImageSource x:Key="ImgCalculate">Resources/Calculating.png</ImageSource>
+        <ImageSource x:Key="ImgTimeSheet">Resources/Timesheet.png</ImageSource>
+        <ImageSource x:Key="ImgDocuments">Resources/Documents.png</ImageSource>
+        <ImageSource x:Key="ImgChat">Resources/Chat.png</ImageSource>
+        <ImageSource x:Key="ImgAdmin">Resources/Admin.png</ImageSource>
+
+
+        <ImageSource x:Key="Background">Resources/Background.png</ImageSource>
+        <ImageBrush x:Key="BackgroundImage" ImageSource="{DynamicResource Background}"/>
 
         <Style TargetType="Label" x:Key="LblMainWindow">
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -23,7 +35,33 @@
             <Setter Property="Margin" Value="15,0,0,0"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="125"/>
         </Style>
+
+        <Style TargetType="Button" x:Key="HamburgerBtn">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="HamburgerImg">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem" x:Key="HamburgerLbI">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="HamburgerSp">
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="HamburgerTb">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+
 
         <Style TargetType="TextBlock" x:Key="TbMainPage">
             <Setter Property="FontSize" Value="15"/>

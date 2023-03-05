@@ -295,8 +295,31 @@
     <Compile Include="Pages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CalculationNormsPage.xaml.cs">
+      <DependentUpon>CalculationNormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ChatPage.xaml.cs">
+      <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DocumentsPage.xaml.cs">
+      <DependentUpon>DocumentsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RepairArchivePage.xaml.cs">
+      <DependentUpon>RepairArchivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RepairPage.xaml.cs">
+      <DependentUpon>RepairPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TimeSheetPage.xaml.cs">
+      <DependentUpon>TimeSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Collections.cs" />
@@ -318,7 +341,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CalculationNormsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DocumentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RepairArchivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RepairPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TimeSheetPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -326,11 +373,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -355,12 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Rosneft.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Home.png" />
@@ -391,6 +427,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Maintenance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Documents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Timesheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Archive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

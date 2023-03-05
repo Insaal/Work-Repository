@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using Rosneft.Helpers.Interfaces;
 
@@ -10,10 +11,14 @@ namespace Rosneft.Helpers
 
         public static readonly string MainPage = "MainPage";
 
-        public static readonly string AdminPage = "AdminUsers";
-        //public static readonly string CalculatingSalary = "CalculatingSalary";
-        //public static readonly string Report = "Report";
-        //public static readonly string About = "About";
+        public static readonly string AdminPage = "AdminPage";
+        public static readonly string RepairPage = "RepairPage";
+        public static readonly string RepairArchivePage = "RepairArchivePage";
+        public static readonly string TimeSheetPage = "TimeSheetPage";
+        public static readonly string DocumentsPage = "DocumentsPage";
+        public static readonly string CalculationNormsPage = "CalculationNormsPage";
+        public static readonly string ChatPage = "ShatPage";
+
         public static readonly string NotFoundPageAlias = "404";
 
         #endregion
@@ -74,6 +79,7 @@ namespace Rosneft.Helpers
             var page = e.Content as Page;
             if (page == null) return;
             page.DataContext = e.ExtraData;
+            if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
         }
 
         #endregion
