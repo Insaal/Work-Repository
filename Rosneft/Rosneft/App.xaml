@@ -15,6 +15,10 @@
         <Image x:Key="About" Source="Resources/About.png"/>
         <Image x:Key="Exit" Source="Resources/Exit.png"/>
 
+        <Image x:Key="DownloadDoc" Source="Resources/Doc.png"/>
+        <Image x:Key="DownloadPdf" Source="Resources/Pdf.png"/>
+        <Image x:Key="DownloadExcel" Source="Resources/Excel.png"/>
+
         <ImageSource x:Key="ImgHamburgerMenu">Resources/HamburgerMenu.png</ImageSource>
         <ImageSource x:Key="ImgHome">Resources/Home.png</ImageSource>
         <ImageSource x:Key="ImgMaintenance">Resources/Maintenance.png</ImageSource>
@@ -61,7 +65,19 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
 
+        <Style x:Key="DgTcStyle" TargetType="Control">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
 
+        <Style x:Key="DgStyle" TargetType="DataGrid">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
 
         <Style TargetType="TextBlock" x:Key="TbMainPage">
             <Setter Property="FontSize" Value="15"/>

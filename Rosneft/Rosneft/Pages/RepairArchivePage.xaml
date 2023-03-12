@@ -1,26 +1,43 @@
 ﻿<Page x:Class="Rosneft.Pages.RepairArchivePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Rosneft.Pages"
-      mc:Ignorable="d" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Архив ремонтов" Loaded="RepairArchivePage_OnLoaded">
 
+    <Page.Resources>
+        <Style TargetType="{x:Type DataGridCellsPresenter}" BasedOn="{StaticResource DgTcStyle}" />
+        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DgStyle}" />
+    </Page.Resources>
+
     <Grid>
-        <DataGrid IsReadOnly="True" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding DataCollection.ObservableUsers, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" BorderThickness="5" BorderBrush="Black" Background="Transparent">
+        <DataGrid ItemsSource="{Binding DataCollection.ObservableRepair, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="auto" Header="№ п\п" Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
-                <DataGridTextColumn Width="*" Header="Куст" Binding="{Binding Path='Login', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
-                <DataGridTextColumn Width="*" Header="Скважина" Binding="{Binding Path='Password', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
-                <DataGridTextColumn Width="*" Header="Месторождение" Binding="{Binding Path='UserName', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
-                <DataGridTextColumn Width="*" Header="Вид Ремонта" Binding="{Binding Path='UserName', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
-                <DataGridTextColumn Width="*" Header="Период: с/по" Binding="{Binding Path='UserName', UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontWeight="Bold"/>
+                <DataGridTextColumn Width="auto" Header="№ п\п"
+                                    Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Бригада"
+                                    Binding="{Binding Path='Team', UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Месторождение"
+                                    Binding="{Binding Path='Field', UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Куст"
+                                    Binding="{Binding Path='Bush', UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Скважина"
+                                    Binding="{Binding Path='Hole', UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Дата начала ремонта"
+                                    Binding="{Binding Path='DateCreate', UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Время начала ремонта"
+                                    Binding="{Binding Path='TimeCreate', UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Дата окончания ремонта"
+                                    Binding="{Binding Path='DateEnd', UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header="Время окончания ремонта"
+                                    Binding="{Binding Path='TimeEnd', UpdateSourceTrigger=PropertyChanged}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Просмотреть" HorizontalAlignment="Left" Margin="0" Width="50"/>
+                            <Button Content="Просмотреть" HorizontalAlignment="Left" Margin="0" Width="auto"
+                                    Height="25" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

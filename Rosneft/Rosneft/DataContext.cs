@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Rosneft.Domain.Repository;
 
 namespace Rosneft
@@ -15,40 +16,45 @@ namespace Rosneft
             return RepositoryClass.GetData(data);
         }
 
-        //public DataCollection GetUsersCollection(DataCollection data)
-        //{
-        //    return RepositoryClass.GetUsersCollection(data);
-        //}
+        public DataCollection FillDataAdminPage(DataCollection data)
+        {
+            return RepositoryClass.FillDataToAdminPage(data);
+        }
 
-        //public DataCollection GetEmployeesCollection(DataCollection data)
-        //{
-        //    return RepositoryClass.GetEmployeesCollection(data);
-        //}
+        public DataCollection FillDataRepairPage(DataCollection data)
+        {
+            return RepositoryClass.FillDataToRepairPage(data);
+        }
 
-        //public DataCollection GetBushCollection(DataCollection data)
-        //{
-        //    return RepositoryClass.GetBushCollection(data);
-        //}
+        public DataCollection FillDataRepairArchivePage(DataCollection data)
+        {
+            return RepositoryClass.FillDataToRepairArchivePage(data);
+        }
 
-        //public DataCollection GetDepartmentCollection(DataCollection data)
-        //{
-        //    return RepositoryClass.GetDepartmentCollection(data);
-        //}
+        public DataCollection FillDataCalculationNormsPage(DataCollection data)
+        {
+            return RepositoryClass.FillDataToCalculationNormsPage(data);
+        }
 
-        //public DataCollection GetFieldCollection(DataCollection data)
-        //{
-        //    return RepositoryClass.GetFieldCollection(data);
-        //}
+        public DataCollection FillDataAddRepairWindow(DataCollection data)
+        {
+            return RepositoryClass.FillDataToAddRepairWindow(data);
+        }
 
-        //public DataCollection GetTeamCollection(DataCollection data)
-        //{
-        //    return RepositoryClass.GetTeamCollection(data);
-        //}
+        public DataCollection FillDataContinueRepairWindow(DataCollection data)
+        {
+            return RepositoryClass.FillDataContinueRepairWindow(data);
+        }
 
-        //public DataCollection GetPostCollection(DataCollection data)
-        //{
-        //    return RepositoryClass.GetPostCollection(data);
-        //}
+        public DataCollection FillDataStandartOperationWindow(DataCollection data)
+        {
+            return RepositoryClass.FillDataStandartOperationWindow(data);
+        }
+
+        public bool ExistenceСheckRepair(string[] data)
+        {
+            return RepositoryClass.ExistenceСheckRepair(data);
+        }
 
     }
 }

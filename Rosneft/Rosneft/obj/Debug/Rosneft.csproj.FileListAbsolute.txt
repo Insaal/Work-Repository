@@ -134,7 +134,6 @@ E:\Work-Repository\Rosneft\Rosneft\bin\Debug\ControlzEx.xml
 E:\Work-Repository\Rosneft\Rosneft\bin\Debug\MahApps.Metro.pdb
 E:\Work-Repository\Rosneft\Rosneft\bin\Debug\MahApps.Metro.xml
 E:\Work-Repository\Rosneft\Rosneft\bin\Debug\de\MahApps.Metro.resources.dll
-E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.csproj.AssemblyReference.cache
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial.resources
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\CalculationNormsPage.g.cs
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\DocumentsPage.g.cs
@@ -148,3 +147,19 @@ E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\RepairPage.baml
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\TimeSheetPage.baml
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\ChatPage.g.cs
 E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Pages\ChatPage.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\StandartOperationsWindow.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\CalculateWindow.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\CalculateWindow.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\StandartOperationsWindow.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.csproj.AssemblyReference.cache
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\AddRepairWindow.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\AddRepairWindow.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\ContinueRepairWindow.g.cs
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\DialogsWindow\ContinueRepairWindow.baml
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial2.resources
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial3.resources
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial31.resources
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial4.resources
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial41.resources
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial5.resources
+E:\Work-Repository\Rosneft\Rosneft\obj\Debug\Rosneft.Migrations._initial6.resources

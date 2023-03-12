@@ -10,8 +10,9 @@
         Icon="{DynamicResource imgSource}"
         Title="Авторизация" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" Background="AliceBlue"
         SizeToContent="WidthAndHeight">
+
     <Window.DataContext>
-        <local:ApplicationViewModel/>
+        <local:ApplicationViewModel />
     </Window.DataContext>
     <Window.Resources>
         <local:ConvertParameter x:Key="ConvertParameters" />
@@ -21,32 +22,33 @@
             <cmd:EventToCommand Command="{Binding ExitRelayCommand}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <StackPanel Style="{StaticResource innerStackPanel}" >
+            <StackPanel Style="{StaticResource innerStackPanel}">
                 <Label Content="Логин:" />
-                <TextBox Margin="7,0,0,0" Name="tbUser"
+                <TextBox Margin="7,0,0,0" Name="TbUser"
                          Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <StackPanel Style="{StaticResource innerStackPanel}">
                 <Label Content="Пароль:" />
-                <PasswordBox Name="pbPassword" PasswordChanged="PbPassword_OnPasswordChanged" />
-                <TextBox x:Name="tbPassword" Visibility="Hidden" MaxLength="0" MaxWidth="0" MaxHeight="0" />
+                <PasswordBox Name="PbPassword" PasswordChanged="PbPassword_OnPasswordChanged" />
+                <TextBox x:Name="TbPassword" Visibility="Hidden" MaxLength="0" MaxWidth="0" MaxHeight="0" />
             </StackPanel>
             <StackPanel Style="{StaticResource innerStackPanel}">
-                <CheckBox Name="cbRememberMe" Margin="5,0,0,0" Content="Запомнить меня:" />
+                <CheckBox Name="CbRememberMe" Margin="5,0,0,0" Content="Запомнить меня:" />
             </StackPanel>
             <StackPanel Style="{StaticResource innerStackPanel}">
-                <Button Margin="25,0,0,0" Content="Enter" Command="{Binding EnterCommand}">
+                <Button Margin="25,0,0,0" Content="Войти" Command="{Binding EnterCommand}">
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource ConvertParameters}">
-                            <Binding Path="Text" ElementName="tbUser" />
-                            <Binding Path="Text" ElementName="tbPassword" />
-                            <Binding Path="IsChecked" ElementName="cbRememberMe"/>
+                            <Binding Path="Text" ElementName="TbUser" />
+                            <Binding Path="Text" ElementName="TbPassword" />
+                            <Binding Path="IsChecked" ElementName="CbRememberMe" />
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>
-                <Button Margin="25,0,0,0" Content="Exit" Command="{Binding ExitCommand}" />
+                <Button Margin="25,0,0,0" Content="Выход" Command="{Binding ExitCommand}" />
             </StackPanel>
         </StackPanel>
     </Grid>

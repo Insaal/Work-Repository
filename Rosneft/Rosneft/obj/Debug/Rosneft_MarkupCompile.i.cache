@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Work-Repository\Rosneft\Rosneft\App.xaml
-101799303144
+14716054673
 
-40-1905753742
+73-1635085212
 181-1674655900
-LoginWindow.xaml;MainWindow.xaml;Pages\AdminPage.xaml;Pages\CalculationNormsPage.xaml;Pages\ChatPage.xaml;Pages\DocumentsPage.xaml;Pages\MainPage.xaml;Pages\RepairArchivePage.xaml;Pages\RepairPage.xaml;Pages\TimeSheetPage.xaml;
+DialogsWindow\AddRepairWindow.xaml;DialogsWindow\CalculateWindow.xaml;DialogsWindow\ContinueRepairWindow.xaml;DialogsWindow\StandartOperationsWindow.xaml;LoginWindow.xaml;MainWindow.xaml;Pages\AdminPage.xaml;Pages\CalculationNormsPage.xaml;Pages\ChatPage.xaml;Pages\DocumentsPage.xaml;Pages\MainPage.xaml;Pages\RepairArchivePage.xaml;Pages\RepairPage.xaml;Pages\TimeSheetPage.xaml;
 
-True
+False
 

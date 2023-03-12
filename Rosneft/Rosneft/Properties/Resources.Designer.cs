@@ -123,6 +123,16 @@ namespace Rosneft.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Doc {
+            get {
+                object obj = ResourceManager.GetObject("Doc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Documents {
             get {
                 object obj = ResourceManager.GetObject("Documents", resourceCulture);
@@ -136,6 +146,16 @@ namespace Rosneft.Properties {
         internal static System.Drawing.Bitmap EmployeesInfo {
             get {
                 object obj = ResourceManager.GetObject("EmployeesInfo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Excel {
+            get {
+                object obj = ResourceManager.GetObject("Excel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +196,16 @@ namespace Rosneft.Properties {
         internal static System.Drawing.Bitmap Maintenance {
             get {
                 object obj = ResourceManager.GetObject("Maintenance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pdf {
+            get {
+                object obj = ResourceManager.GetObject("Pdf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

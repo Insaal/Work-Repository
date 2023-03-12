@@ -8,13 +8,13 @@ namespace Rosneft
         public LoginWindow()
         {
             InitializeComponent();
-            tbUser.Text = Settings.Default.UserName;
-            pbPassword.Password = Settings.Default.Password;
+            TbUser.Text = Settings.Default.UserName;
+            PbPassword.Password = Settings.Default.Password;
         }
 
         private void PbPassword_OnPasswordChanged(object sender, RoutedEventArgs e)
         {
-            tbPassword.Text = pbPassword.Password;
+            TbPassword.Text = PbPassword.Password;
         }
     }
 }

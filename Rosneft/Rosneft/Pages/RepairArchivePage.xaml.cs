@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Rosneft.ViewModels;
 
 namespace Rosneft.Pages
 {
@@ -12,7 +13,7 @@ namespace Rosneft.Pages
 
         private void RepairArchivePage_OnLoaded(object sender, RoutedEventArgs e)
         {
-            DataContext = new ApplicationViewModel();
+            DataContext = new RepairArchiveViewModel();
         }
     }
 }

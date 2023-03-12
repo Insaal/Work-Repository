@@ -262,6 +262,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\AddRepairViewModel.cs" />
+    <Compile Include="ViewModels\CalculateViewModel.cs" />
+    <Compile Include="ViewModels\CalculationNormsViewModel.cs" />
+    <Compile Include="ViewModels\ContinueRepairViewModel.cs" />
+    <Compile Include="ViewModels\RepairArchiveViewModel.cs" />
+    <Compile Include="ViewModels\RepairPageViewModel.cs" />
+    <Compile Include="ViewModels\StandartOperationViewModel.cs" />
+    <Page Include="DialogsWindow\AddRepairWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogsWindow\CalculateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogsWindow\ContinueRepairWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogsWindow\StandartOperationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -274,12 +297,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DialogsWindow\AddRepairWindow.xaml.cs">
+      <DependentUpon>AddRepairWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogsWindow\CalculateWindow.xaml.cs">
+      <DependentUpon>CalculateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogsWindow\ContinueRepairWindow.xaml.cs">
+      <DependentUpon>ContinueRepairWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogsWindow\StandartOperationsWindow.xaml.cs">
+      <DependentUpon>StandartOperationsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Domain\Entities\Bush.cs" />
     <Compile Include="Domain\Entities\Department.cs" />
     <Compile Include="Domain\Entities\Employees.cs" />
     <Compile Include="Domain\Entities\Field.cs" />
+    <Compile Include="Domain\Entities\Hole.cs" />
+    <Compile Include="Domain\Entities\Operations.cs" />
+    <Compile Include="Domain\Entities\PipeDiameter.cs" />
     <Compile Include="Domain\Entities\Post.cs" />
+    <Compile Include="Domain\Entities\ProtectorType.cs" />
+    <Compile Include="Domain\Entities\Repair.cs" />
+    <Compile Include="Domain\Entities\RepairDescription.cs" />
     <Compile Include="Domain\Entities\Team.cs" />
+    <Compile Include="Domain\Entities\TypeOfDescentEquipment.cs" />
     <Compile Include="Helpers\BaseViewModel.cs" />
     <Compile Include="Helpers\DefaultDialogService.cs" />
     <Compile Include="Helpers\Interfaces\IDialogService.cs" />
@@ -290,6 +332,34 @@
     <Compile Include="Migrations\202302241038103__initial.cs" />
     <Compile Include="Migrations\202302241038103__initial.designer.cs">
       <DependentUpon>202302241038103__initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303111938176__initial2.cs" />
+    <Compile Include="Migrations\202303111938176__initial2.designer.cs">
+      <DependentUpon>202303111938176__initial2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303120905147__initial3.cs" />
+    <Compile Include="Migrations\202303120905147__initial3.designer.cs">
+      <DependentUpon>202303120905147__initial3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303120909244__initial31.cs" />
+    <Compile Include="Migrations\202303120909244__initial31.designer.cs">
+      <DependentUpon>202303120909244__initial31.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303120913166__initial4.cs" />
+    <Compile Include="Migrations\202303120913166__initial4.designer.cs">
+      <DependentUpon>202303120913166__initial4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303120917279__initial41.cs" />
+    <Compile Include="Migrations\202303120917279__initial41.designer.cs">
+      <DependentUpon>202303120917279__initial41.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303120940140__initial5.cs" />
+    <Compile Include="Migrations\202303120940140__initial5.designer.cs">
+      <DependentUpon>202303120940140__initial5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303121133257__initial6.cs" />
+    <Compile Include="Migrations\202303121133257__initial6.designer.cs">
+      <DependentUpon>202303121133257__initial6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pages\AdminPage.xaml.cs">
@@ -321,6 +391,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AdminPageViewModel.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Collections.cs" />
     <Compile Include="Helpers\ConvertParameter.cs" />
@@ -382,6 +453,27 @@
     <EmbeddedResource Include="Migrations\202302241038103__initial.resx">
       <DependentUpon>202302241038103__initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303111938176__initial2.resx">
+      <DependentUpon>202303111938176__initial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303120905147__initial3.resx">
+      <DependentUpon>202303120905147__initial3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303120909244__initial31.resx">
+      <DependentUpon>202303120909244__initial31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303120913166__initial4.resx">
+      <DependentUpon>202303120913166__initial4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303120917279__initial41.resx">
+      <DependentUpon>202303120917279__initial41.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303120940140__initial5.resx">
+      <DependentUpon>202303120940140__initial5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303121133257__initial6.resx">
+      <DependentUpon>202303121133257__initial6.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -442,6 +534,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Doc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

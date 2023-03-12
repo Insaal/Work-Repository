@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
+using Rosneft.DialogsWindow;
 using Rosneft.Helpers;
 using Rosneft.Properties;
 
@@ -8,14 +10,14 @@ namespace Rosneft
 {
     public class ApplicationViewModel : BaseViewModel
     {
-        private readonly DataContext context = new DataContext();
-        private readonly DefaultDialogService dialogService = new DefaultDialogService();
-        private EnteringData entering = new EnteringData();
+        private readonly DataContext _context = new DataContext();
+        private readonly DefaultDialogService _dialogService = new DefaultDialogService();
+        private EnteringData _entering = new EnteringData();
         private DataCollection _dataCollection;
         private RelayCommand _enterCommand;
         private RelayCommand _exitCommand;
-        private RelayCommand _getMessage;
         private RelayCommand<CancelEventArgs> _exitRelayCommand;
+        private RelayCommand<SizeChangedEventArgs> _sizeChange;
         private RelayCommand _goRepair;
         private RelayCommand _goRepairArchive;
         private RelayCommand _goCalculationNorms;
@@ -24,7 +26,19 @@ namespace Rosneft
         private RelayCommand _goChat;
         private RelayCommand _goAdmin;
         private RelayCommand _goMain;
+        private double _btnWidth;
         private string[] _data;
+
+
+        public double BtnWidth
+        {
+            get => _btnWidth;
+            set
+            {
+                _btnWidth = value;
+                OnPropertyChanged();
+            }
+        }
 
         public DataCollection DataCollection
         {
@@ -36,35 +50,18 @@ namespace Rosneft
             }
         }
 
-        public RelayCommand GetMessage
-        {
-            get
-            {
-                return _getMessage ??
-                       (_getMessage = new RelayCommand(obj => { }));
-            }
-        }
-
         public ApplicationViewModel()
         {
-            try
-            {
-                DataCollection = new DataCollection();
-                DataCollection = context.FillData(DataCollection);
-
-                //DataCollection = context.GetUsersCollection(DataCollection);
-                //DataCollection = context.GetEmployeesCollection(DataCollection);
-                //DataCollection = context.GetBushCollection(DataCollection);
-                //DataCollection = context.GetFieldCollection(DataCollection);
-                //DataCollection = context.GetDepartmentCollection(DataCollection);
-                //DataCollection = context.GetPostCollection(DataCollection);
-                //DataCollection = context.GetTeamCollection(DataCollection);
-            }
-            catch (Exception e)
-            {
-                dialogService.ShowMessage(e.Message, "Ошибка");
-                throw;
-            }
+            //try
+            //{
+            //    DataCollection = new DataCollection();
+            //    DataCollection = _context.FillData(DataCollection);
+            //}
+            //catch (Exception e)
+            //{
+            //    _dialogService.ShowMessage(e.Message, "Ошибка");
+            //    throw;
+            //}
         }
 
         public RelayCommand EnterCommand
@@ -78,14 +75,14 @@ namespace Rosneft
                            {
                                var values = (Tuple<string, string, bool>)obj;
                                _data = new[] { values.Item1, values.Item2 };
-                               if (_data[0] == string.Empty || _data[1] == string.Empty)
+                               if (_data.Any(a=>a.Length == 0))
                                {
-                                   dialogService.ShowMessage("Заполните поля", "Сообщение");
+                                   _dialogService.ShowMessage("Заполните поля", "Сообщение");
                                    return;
                                }
 
-                               entering = context.Enter(_data[0], _data[1]);
-                               if (entering.Entering)
+                               _entering = _context.Enter(_data[0], _data[1]);
+                               if (_entering.Entering)
                                {
                                    if (values.Item3)
                                    {
@@ -100,19 +97,19 @@ namespace Rosneft
                                        Settings.Default.Save();
                                    }
 
-                                   dialogService.ShowMessage(
-                                       "Добро пожаловать " + entering.Role + " " + entering.UserName,
+                                   _dialogService.ShowMessage(
+                                       "Добро пожаловать " + _entering.Role + " " + _entering.UserName,
                                        "Сообщение");
                                    Application.Current.Windows[1]?.Hide();
                                }
                                else
                                {
-                                   dialogService.ShowMessage("Неправильный логин или пароль", "Сообщение");
+                                   _dialogService.ShowMessage("Неправильный логин или пароль", "Сообщение");
                                }
                            }
                            catch (Exception e)
                            {
-                               dialogService.ShowMessage(e.Message, "Ошибка");
+                               _dialogService.ShowMessage(e.Message, "Ошибка");
                                throw;
                            }
                        }));
@@ -126,11 +123,13 @@ namespace Rosneft
                 return _exitCommand ??
                        (_exitCommand = new RelayCommand(obj =>
                        {
-                           if (dialogService.Close("Вы действительно хотите выйти?", "Выход"))
+                           if (_dialogService.Close("Вы действительно хотите выйти?", "Выход"))
                                Closing();
                        }));
             }
         }
+
+
 
         public RelayCommand<CancelEventArgs> ExitRelayCommand
         {
@@ -139,10 +138,22 @@ namespace Rosneft
                 return _exitRelayCommand ??
                        (_exitRelayCommand = new RelayCommand<CancelEventArgs>(obj =>
                        {
-                           if (dialogService.Exit("Вы действительно хотите выйти?", "Выход", obj))
+                           if (_dialogService.Exit("Вы действительно хотите выйти?", "Выход", obj))
                                Closing();
                            else
                                obj.Cancel = true;
+                       }));
+            }
+        }
+
+        public RelayCommand<SizeChangedEventArgs> SizeChange
+        {
+            get
+            {
+                return _sizeChange ??
+                       (_sizeChange = new RelayCommand<SizeChangedEventArgs>(obj =>
+                       {
+                           BtnWidth = obj.NewSize.Width / 10;
                        }));
             }
         }
@@ -152,10 +163,7 @@ namespace Rosneft
             get
             {
                 return _goRepair ??
-                       (_goRepair = new RelayCommand(obj =>
-                       {
-                           Navigation.Navigate(Navigation.RepairPage);
-                       }));
+                       (_goRepair = new RelayCommand(obj => { Navigation.Navigate(Navigation.RepairPage); }));
             }
         }
 
@@ -215,10 +223,7 @@ namespace Rosneft
             get
             {
                 return _goMain ??
-                       (_goMain = new RelayCommand(obj =>
-                       {
-                           Navigation.Navigate(Navigation.MainPage);
-                       }));
+                       (_goMain = new RelayCommand(obj => { Navigation.Navigate(Navigation.MainPage); }));
             }
         }
 
@@ -227,91 +232,14 @@ namespace Rosneft
             get
             {
                 return _goAdmin ??
-                       (_goAdmin = new RelayCommand(obj =>
-                       {
-                           Navigation.Navigate(Navigation.AdminPage);
-                       }));
+                       (_goAdmin = new RelayCommand(obj => { Navigation.Navigate(Navigation.AdminPage); }));
             }
         }
-
-
-        //public void LogginWindow_Closing(object sender, CancelEventArgs e)
-        //{
-        //    if (_closedlogginwindow == 1)
-        //    {
-        //        MessageBox.Show("HUI");
-        //    }
-        //    else
-        //    if (dialogService.Exit("Вы действительно хотите выйти?", "Выход", e))
-        //    {
-        //        _closedlogginwindow = 1;
-        //        Closing();
-        //    }
-        //    else
-        //        e.Cancel = true;
-        //}
-
-        //public void MainWindow_Closing(object sender, CancelEventArgs e)
-        //{
-        //    if (_closedlogginwindow == 1)
-        //    {
-        //        MessageBox.Show("HUI");
-        //    }
-        //    if (_closedlogginwindow == 0)
-        //    {
-        //        Closing();
-        //        if (dialogService.Exit("Вы действительно хотите выйти?", "Выход", e))
-        //            Closing();
-        //        else
-        //            e.Cancel = true;
-        //    }
-        //}
 
         public void Closing()
         {
             Application.Current.Shutdown();
         }
 
-        //private void Navigate(string name)
-        //{
-        //    Page page = null;
-        //    switch (name)
-        //    {
-        //        case "Repair": page = new RepairPage(); break;
-        //        case "RepairArchive": page = new RepairArchivePage();
-        //            break;
-        //        case "CalculationNorms": page = new CalculationNormsPage();
-        //            break;
-        //        case "TimeSheet": page = new TimeSheetPage(); break;
-        //        case "Documents": page = new DocumentsPage(); break;
-        //        case "Chat": page = new AdminPage(); break;
-        //        case "Admin": page = new AdminPage(); break;
-        //        case "Main": page = new MainPage();
-        //            break;
-        //    };
-        //    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
-        //    Navigation.Navigate(page);
-        //}
-
-        ////private void GoRepairCommandExecute()
-        ////{
-        ////    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
-        ////    Navigation.Navigate(page);
-        ////}
-
-
-        //private void GoAdminCommandExecute()
-        //{
-        //    var page = new AdminPage();
-        //    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
-        //    Navigation.Navigate(Navigation.AdminPage);
-        //}
-
-        //private void GoMainCommandExecute()
-        //{
-        //    var page = new MainPage();
-        //    if (Application.Current.MainWindow != null) Application.Current.MainWindow.Title = page.Title;
-        //    Navigation.Navigate(Navigation.MainPage);
-        //}
     }
 }
