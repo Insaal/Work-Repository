@@ -4,51 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rosneft"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
         mc:Ignorable="d"
         Icon="{DynamicResource imgSource}"
-        Title="Авторизация" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" Background="AliceBlue"
-        SizeToContent="WidthAndHeight">
-
-    <Window.DataContext>
-        <local:ApplicationViewModel />
-    </Window.DataContext>
-    <Window.Resources>
-        <local:ConvertParameter x:Key="ConvertParameters" />
-    </Window.Resources>
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Closing">
-            <cmd:EventToCommand Command="{Binding ExitRelayCommand}" PassEventArgsToCommand="True" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-
+        Title="Авторизация" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" Background="AliceBlue" SizeToContent="WidthAndHeight">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <StackPanel Style="{StaticResource innerStackPanel}">
-                <Label Content="Логин:" />
-                <TextBox Margin="7,0,0,0" Name="TbUser"
-                         Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Orientation="Vertical">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Label Content="Логин:"/>
+                <TextBox Margin="7,0,0,0" Width="150" Height="20"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource innerStackPanel}">
-                <Label Content="Пароль:" />
-                <PasswordBox Name="PbPassword" PasswordChanged="PbPassword_OnPasswordChanged" />
-                <TextBox x:Name="TbPassword" Visibility="Hidden" MaxLength="0" MaxWidth="0" MaxHeight="0" />
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Label Content="Пароль:"/>
+                <PasswordBox Width="150" Height="20"/>
             </StackPanel>
-            <StackPanel Style="{StaticResource innerStackPanel}">
-                <CheckBox Name="CbRememberMe" Margin="5,0,0,0" Content="Запомнить меня:" />
-            </StackPanel>
-            <StackPanel Style="{StaticResource innerStackPanel}">
-                <Button Margin="25,0,0,0" Content="Войти" Command="{Binding EnterCommand}">
-                    <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource ConvertParameters}">
-                            <Binding Path="Text" ElementName="TbUser" />
-                            <Binding Path="Text" ElementName="TbPassword" />
-                            <Binding Path="IsChecked" ElementName="CbRememberMe" />
-                        </MultiBinding>
-                    </Button.CommandParameter>
-                </Button>
-                <Button Margin="25,0,0,0" Content="Выход" Command="{Binding ExitCommand}" />
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <CheckBox Margin="5,0,0,0" Content="Запомнить меня:"/>
             </StackPanel>
         </StackPanel>
     </Grid>
