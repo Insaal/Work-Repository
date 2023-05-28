@@ -1,0 +1,197 @@
+﻿<Page x:Class="Rosneft.Pages.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Администрирование" Loaded="AdminPage_OnLoaded">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type DataGridCellsPresenter}" BasedOn="{StaticResource DgTcStyle}" />
+        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DgStyle}" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="Transparent">
+            <TabItem Header="Пользователи">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Grid.Column="0" Grid.ColumnSpan="3"
+                              ItemsSource="{Binding DataCollection.ObservableUsers, UpdateSourceTrigger=PropertyChanged}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="auto" Header="№ п\п"
+                                                Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Логин"
+                                                Binding="{Binding Path='Login', UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Пароль"
+                                                Binding="{Binding Path='Password', UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Имя пользователя"
+                                                Binding="{Binding Path='UserName', UpdateSourceTrigger=PropertyChanged}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Grid.Column="3" Orientation="Vertical" Margin="0">
+                        <Button Content="Добавить" Width="auto" Height="50" />
+                        <Button Content="Изменить" Width="auto" Height="50" />
+                        <Button Content="Удалить" Width="auto" Height="50" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Сотрудники">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Grid.Column="0" Grid.ColumnSpan="3"
+                              ItemsSource="{Binding DataCollection.ObservableEmployees, UpdateSourceTrigger=PropertyChanged}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="auto" Header="№ п\п"
+                                                Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Фамилия"
+                                                Binding="{Binding Path='SurName', UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Имя"
+                                                Binding="{Binding Path='Name', UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Отчество"
+                                                Binding="{Binding Path='ThirdName', UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Отдел"
+                                                Binding="{Binding Path='Department', UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Бригада"
+                                                Binding="{Binding Path='Team', UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Width="*" Header="Должность"
+                                                Binding="{Binding Path='Post', UpdateSourceTrigger=PropertyChanged}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Grid.Column="3" Orientation="Vertical" Margin="0">
+                        <Button Content="Добавить" Width="auto" Height="50" />
+                        <Button Content="Изменить" Width="auto" Height="50" />
+                        <Button Content="Удалить" Width="auto" Height="50" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0"
+                      ItemsSource="{Binding DataCollection.ObservableDepartment, UpdateSourceTrigger=PropertyChanged}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="auto" Header="№ п\п"
+                                        Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Width="*" Header="Отдел"
+                                        Binding="{Binding Path='Department', UpdateSourceTrigger=PropertyChanged}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0">
+                <Button Content="Добавить" Width="auto" Height="50" />
+                <Button Content="Изменить" Width="auto" Height="50" />
+                <Button Content="Удалить" Width="auto" Height="50" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0"
+                      ItemsSource="{Binding DataCollection.ObservableBush, UpdateSourceTrigger=PropertyChanged}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="auto" Header="№ п\п"
+                                        Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Width="*" Header="Куст"
+                                        Binding="{Binding Path='Bush', UpdateSourceTrigger=PropertyChanged}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0">
+                <Button Content="Добавить" Width="auto" Height="50" />
+                <Button Content="Изменить" Width="auto" Height="50" />
+                <Button Content="Удалить" Width="auto" Height="50" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0"
+                      ItemsSource="{Binding DataCollection.ObservableField, UpdateSourceTrigger=PropertyChanged}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="auto" Header="№ п\п"
+                                        Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Width="*" Header="Месторождение"
+                                        Binding="{Binding Path='Field', UpdateSourceTrigger=PropertyChanged}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0">
+                <Button Content="Добавить" Width="auto" Height="50" />
+                <Button Content="Изменить" Width="auto" Height="50" />
+                <Button Content="Удалить" Width="auto" Height="50" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0"
+                      ItemsSource="{Binding DataCollection.ObservableTeam, UpdateSourceTrigger=PropertyChanged}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="auto" Header="№ п\п"
+                                        Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Width="*" Header="Бригады"
+                                        Binding="{Binding Path='Team', UpdateSourceTrigger=PropertyChanged}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0">
+                <Button Content="Добавить" Width="auto" Height="50" />
+                <Button Content="Изменить" Width="auto" Height="50" />
+                <Button Content="Удалить" Width="auto" Height="50" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0" IsReadOnly="True"
+                      ItemsSource="{Binding DataCollection.ObservablePost, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding DataCollection.ObservablePost}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="auto" Header="№ п\п"
+                                        Binding="{Binding Path='Rows',UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Width="*" Header="Должности"
+                                        Binding="{Binding Path='Post', UpdateSourceTrigger=PropertyChanged}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0">
+                <Button Content="Добавить" Command="{Binding GetMessage}"
+                        CommandParameter="{Binding DataCollection.ObservablePost }" />
+                <Button Content="Изменить" Width="auto" Height="50" />
+                <Button Content="Удалить" Width="auto" Height="50" />
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Page>

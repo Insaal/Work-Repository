@@ -1,0 +1,10 @@
+﻿<Application x:Class="RosneftCore.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RosneftCore"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ImageSource x:Key="imgSource">Resources\Background.jpg</ImageSource>
+        <ImageBrush x:Key="BackgroundImage" ImageSource="{DynamicResource imgSource}"></ImageBrush>
+    </Application.Resources>
+</Application>
