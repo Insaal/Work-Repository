@@ -20,7 +20,41 @@ namespace Password_Generation
         private string _outputText;
         private string _passwordLength;
         private string _numberOfPasswords;
+        private string _stepOfCesar;
+        private string _stepOfVizhener;
+        private Visibility _stepVisibility;
+        private Visibility _vizhenerVisibility;
         private bool[] _cbChecked = new bool[6];
+
+        public string StepOfVizhener
+        {
+            get => _stepOfVizhener;
+            set
+            {
+                _stepOfVizhener = value;
+                OnPropertyChanged("StepOfVizhener");
+            }
+        }
+
+        public Visibility VizhenerVisibility
+        {
+            get => _vizhenerVisibility;
+            set
+            {
+                _vizhenerVisibility = value;
+                OnPropertyChanged("VizhenerVisibility");
+            }
+        }
+
+        public Visibility StepVisibility
+        {
+            get => _stepVisibility;
+            set
+            {
+                _stepVisibility = value;
+                OnPropertyChanged("StepVisibility");
+            }
+        }
 
         public string InputText
         {
@@ -62,6 +96,16 @@ namespace Password_Generation
             }
         }
 
+        public string StepOfCesar
+        {
+            get => _stepOfCesar;
+            set
+            {
+                _stepOfCesar = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool[] CbChecked
         {
             get => _cbChecked;
@@ -77,6 +121,9 @@ namespace Password_Generation
             InitializeComponent();
             PasswordLength = "1";
             NumberOfPasswords = "1";
+            StepOfCesar = "1";
+            StepVisibility = Visibility.Collapsed;
+            VizhenerVisibility = Visibility.Collapsed;
             DataContext = this;
         }
 
@@ -88,7 +135,8 @@ namespace Password_Generation
                     EncryptOfMethod(_selectedEcryptMethod);
                     break;
                 case "BtnGeneratePassword":
-                    GeneratePassword(Convert.ToInt32(PasswordLength), Convert.ToInt32(NumberOfPasswords), GetAplhabetForGeneratePassword(CbChecked));
+                    GeneratePassword(Convert.ToInt32(PasswordLength), Convert.ToInt32(NumberOfPasswords),
+                        GetAplhabetForGeneratePassword(CbChecked));
                     break;
             }
         }
@@ -99,31 +147,35 @@ namespace Password_Generation
             {
                 case "RbAtbash":
                     _selectedEcryptMethod = 1;
+                    StepVisibility = Visibility.Collapsed;
+                    VizhenerVisibility = Visibility.Collapsed;
                     break;
                 case "RbCesar":
                     _selectedEcryptMethod = 2;
+                    StepVisibility = Visibility.Visible;
+                    VizhenerVisibility = Visibility.Collapsed;
                     break;
                 case "RbVigener":
                     _selectedEcryptMethod = 3;
+                    StepVisibility = Visibility.Collapsed;
+                    VizhenerVisibility = Visibility.Visible;
                     break;
             }
         }
 
         private void GeneratePassword(int passwordLenght, int numberOfPassword, string alphabet)
         {
-            if (alphabet.Equals(String.Empty))
+            if (alphabet.Equals(string.Empty))
             {
                 MessageBox.Show("Выберите алфавит для генерации!");
                 return;
             }
+
             OutputText = null;
-            Random rnd = new Random();
-            for (int i = 0; i < numberOfPassword; i++)
+            var rnd = new Random();
+            for (var i = 0; i < numberOfPassword; i++)
             {
-                for (int j = 0; j < passwordLenght; j++)
-                {
-                    OutputText += alphabet[rnd.Next(0, alphabet.Length - 1)];
-                }
+                for (var j = 0; j < passwordLenght; j++) OutputText += alphabet[rnd.Next(0, alphabet.Length - 1)];
 
                 OutputText += "\n";
             }
@@ -161,6 +213,15 @@ namespace Password_Generation
 
         private void EncryptOfMethod(int a)
         {
+            if (InputText == null)
+            {
+                MessageBox.Show("Введите строку");
+                return;
+            }
+
+            InputText = InputText.ToUpper();
+            OutputText = string.Empty;
+
             switch (a)
             {
                 case 0:
@@ -168,8 +229,6 @@ namespace Password_Generation
                     break;
                 case 1:
                     string outAlphabet;
-                    OutputText = string.Empty;
-                    InputText = InputText.ToUpper();
                     for (var i = 0; i < InputText.Length; i++)
                     {
                         if (_russianAplhabet.Contains(InputText[i]))
@@ -193,10 +252,72 @@ namespace Password_Generation
 
                     break;
                 case 2:
-                    MessageBox.Show("Цезарь");
+                    var step = 0;
+                    step = Convert.ToInt32(StepOfCesar) % _russianAplhabet.Length;
+                    for (var i = 0; i < InputText.Length; i++)
+                    {
+                        if (_russianAplhabet.Contains(InputText[i]))
+                            OutputText +=
+                                _russianAplhabet[
+                                        (_russianAplhabet.IndexOf(InputText[i]) + step) % _russianAplhabet.Length]
+                                    .ToString();
+
+                        if (_englishAplhabet.Contains(InputText[i]))
+                            OutputText +=
+                                _englishAplhabet[
+                                        (_englishAplhabet.IndexOf(InputText[i]) + step) % _englishAplhabet.Length]
+                                    .ToString();
+
+                        if (_numbersAplhabet.Contains(InputText[i]))
+                            OutputText +=
+                                _numbersAplhabet[
+                                        (_numbersAplhabet.IndexOf(InputText[i]) + step) % _numbersAplhabet.Length]
+                                    .ToString();
+                    }
+
                     break;
                 case 3:
-                    MessageBox.Show("Виженер");
+                    int[] stepVizhener = new int[StepOfVizhener.Length];
+                    int j = 0;
+                    InputText = InputText.Replace(" ", "");
+                    for (int i = 0; i < StepOfVizhener.Length; i++)
+                    {
+                        if (_russianAplhabet.Contains(InputText[i]))
+                            stepVizhener[i] = _russianAplhabet.IndexOf(StepOfVizhener[i]);
+
+                        if (_englishAplhabet.Contains(InputText[i]))
+                            stepVizhener[i] = _englishAplhabet.IndexOf(StepOfVizhener[i]);
+
+                        if (_numbersAplhabet.Contains(InputText[i]))
+                            stepVizhener[i] = _numbersAplhabet.IndexOf(StepOfVizhener[i]);
+
+                    }
+                    for (var i = 0; i < InputText.Length; i++)
+                    {
+                        if (j == stepVizhener.Length)
+                        {
+                            j = 0;
+                        }
+                        if (_russianAplhabet.Contains(InputText[i]))
+                            OutputText +=
+                                _russianAplhabet[
+                                    (_russianAplhabet.IndexOf(InputText[i]) + stepVizhener[j]) %
+                                    _russianAplhabet.Length].ToString();
+                            
+                        if (_englishAplhabet.Contains(InputText[i]))
+                            OutputText +=
+                                _englishAplhabet[
+                                    (_englishAplhabet.IndexOf(InputText[i]) + stepVizhener[j]) %
+                                    _englishAplhabet.Length].ToString();
+
+                        if (_numbersAplhabet.Contains(InputText[i]))
+                            OutputText +=
+                                _numbersAplhabet[
+                                    (_numbersAplhabet.IndexOf(InputText[i]) + stepVizhener[j]) %
+                                    _numbersAplhabet.Length].ToString();
+                        j++;
+                    }
+
                     break;
             }
         }

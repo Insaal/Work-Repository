@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Главное меню" Height="429" Width="438">
+        Title="Главное меню" Height="322" Width="497">
 
     <Window.Resources>
         <Style TargetType="RadioButton">
@@ -13,6 +13,21 @@
         </Style>
         <Style TargetType="CheckBox">
             <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="Button">
+            <EventSetter Event="Click" Handler="BtnClick"/>
+            <Setter Property="Width" Value="125"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Slider">
+            <Setter Property="Minimum" Value="1"/>
+            <Setter Property="IsSnapToTickEnabled" Value="True"/>
+            <Setter Property="IsSelectionRangeEnabled" Value="True"/>
+            <Setter Property="Width" Value="180"/>
+            <EventSetter Event="ValueChanged" Handler="Slider_ValueChanged"/>
         </Style>
     </Window.Resources>
 
@@ -27,18 +42,14 @@
 
                     <StackPanel Grid.Column="0"
                                 Orientation="Vertical">
-                        <Label HorizontalAlignment="Center" Content="Длина пароля:" />
+                        <Label Content="Длина пароля:" />
                         <StackPanel Orientation="Horizontal">
-                            <Slider x:Name="SldLenght" Minimum="1" Maximum="25" IsSnapToTickEnabled="True"
-                                    IsSelectionRangeEnabled="True" ValueChanged="Slider_ValueChanged"
-                                    Value="{Binding PasswordLength}" Width="180" />
+                            <Slider x:Name="SldLenght" Maximum="25" Value="{Binding PasswordLength}" />
                             <Label Content="{Binding PasswordLength}" Width="25" />
                         </StackPanel>
-                        <Label HorizontalAlignment="Center" Content="Количество паролей:" />
+                        <Label Content="Количество паролей:" />
                         <StackPanel Orientation="Horizontal">
-                            <Slider x:Name="SldNumber" Minimum="1" Maximum="50" IsSnapToTickEnabled="True"
-                                    IsSelectionRangeEnabled="True" ValueChanged="Slider_ValueChanged"
-                                    Value="{Binding NumberOfPasswords}" Width="180" />
+                            <Slider x:Name="SldNumber" Maximum="50" Value="{Binding NumberOfPasswords}" />
                             <Label Content="{Binding NumberOfPasswords}" Width="25" />
                         </StackPanel>
 
@@ -55,13 +66,12 @@
                             </StackPanel>
                         </StackPanel>
 
-                        <Button x:Name="BtnGeneratePassword" Content="Генерировать пароли" Width="125" Height="25"
-                                Click="BtnClick" />
+                        <Button x:Name="BtnGeneratePassword" Content="Генерировать пароли"/>
                     </StackPanel>
 
 
-                    <StackPanel Grid.Column="1" Orientation="Vertical">
-                        <Label HorizontalAlignment="Center" Content="Ваши пароли:" />
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,0,0">
+                        <Label Content="Ваши пароли:" />
                         <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="300">
                             <TextBlock Text="{Binding OutputText}"/>
                         </ScrollViewer>
@@ -79,22 +89,32 @@
 
                     <StackPanel Grid.Column="0"
                                 Orientation="Vertical">
-                        <Label HorizontalAlignment="Center" Content="Введите шифруемую строку:" />
+                        <Label Content="Введите шифруемую строку:" />
                         <TextBox Text="{Binding InputText}" MinWidth="150" />
-                        <Label HorizontalAlignment="Center" Content="Выберите метод шифрования:" />
+                        <Label Content="Выберите метод шифрования:" />
                         <StackPanel Orientation="Horizontal">
                             <RadioButton x:Name="RbAtbash" GroupName="Method" Content="Атбаш" />
                             <RadioButton x:Name="RbCesar" GroupName="Method" Content="Цезаря" />
                             <RadioButton x:Name="RbVigener" GroupName="Method" Content="Виженера" />
                         </StackPanel>
+                        <StackPanel Orientation="Vertical"  Visibility="{Binding StepVisibility}">
+                            <Label Content="Выберите шаг:"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Slider x:Name="SldStepOfCesar" Maximum="50" Value="{Binding StepOfCesar}"/>
+                            <Label Content="{Binding StepOfCesar}" Width="25" />
+                                </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical"  Visibility="{Binding VizhenerVisibility}">
+                            <Label Content="Введите кодовое слово:"/>
+                                <TextBox Text="{Binding StepOfVizhener}" MinWidth="150"/>
+                        </StackPanel>
 
-                        <Button x:Name="BtnEncrypt" Content="Зашифровать строку" Width="125" Height="25"
-                                Click="BtnClick" />
+                        <Button x:Name="BtnEncrypt" Content="Зашифровать строку" />
                     </StackPanel>
 
 
-                    <StackPanel Grid.Column="1" Orientation="Vertical">
-                        <Label HorizontalAlignment="Center" Content="Шифрованная фраза:" />
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,0,0">
+                        <Label Content="Шифрованная фраза:" />
                         <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="300">
                             <TextBlock Text="{Binding OutputText}"/>
                         </ScrollViewer>
