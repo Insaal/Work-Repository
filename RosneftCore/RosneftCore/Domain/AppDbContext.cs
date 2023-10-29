@@ -1,7 +1,7 @@
 using System;
 using RosneftCore.Domain.Entities;
+using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
-using Rosneft.Domain.Entities;
 
 namespace RosneftCore.Domain
 {

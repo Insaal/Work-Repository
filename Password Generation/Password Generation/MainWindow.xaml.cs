@@ -139,6 +139,7 @@ namespace Password_Generation
                         GetAplhabetForGeneratePassword(CbChecked));
                     break;
             }
+            ша
         }
 
         private void RbChecked(object sender, RoutedEventArgs e)
